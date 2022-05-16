@@ -30,7 +30,7 @@
         </div>
       </section>
 
-      <section v-show="winner !== null">
+      <section v-show="winner">
         <div class="container" >
           <h1 >Game Over!</h1>
           <h3 v-if="winner === 'monster'" >You Lose..</h3>
@@ -40,12 +40,14 @@
         </div>
       </section>
 
-      <section id="controls">
+      <section id="controls" v-show="!winner">
         <button @click="attackMonster">ATTACK</button>
         <button :disabled="mayUseSpecialAttack" @click="specialAttack">SPECIAL ATTACK</button>
         <button @click="healPlayer">HEAL</button>
         <button @click="giveUp">SURRENDER</button>
-        <button @click="resetGame">Reset</button>
+      </section>
+      <section class="container">
+        <button @click="startnew">Start New Game</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
